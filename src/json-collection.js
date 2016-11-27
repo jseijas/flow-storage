@@ -14,7 +14,8 @@ class JsonCollection extends BaseCollection {
    */
   constructor(settings) {
     super(settings);
-    this.db = new Store(settings.name, settings.store);
+    settings.path = settings.path || './data';
+    this.db = new Store(settings.path+'/'+settings.name, settings.store);
   }
 
   /**
@@ -24,7 +25,15 @@ class JsonCollection extends BaseCollection {
    * @param { Function } cb Callback function.
    */
   getAll(key, cb) {
-    return this.db.get(key, cb);
+    this.db.get(key, function(err, result) {
+      if (err) {
+        if (err.message === 'could not load data') {
+          return cb(null, undefined);
+        }
+        return cb(err);
+      }
+      return cb(null, result);
+    });
   }
 
   /**
