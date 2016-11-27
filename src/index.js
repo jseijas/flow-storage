@@ -1,5 +1,8 @@
 'use strict';
+import BaseCollection from './base-collection';
+import MemoryCollection from './memory-collection';
+import JsonCollection from './json-collection';
 
-export { BaseCollection } from './base-collection';
-export { MemoryCollection } from './memory-collection';
-export { JsonCollection } from './json-collection';
+export { BaseCollection };
+export { MemoryCollection };
+export { JsonCollection };
