@@ -14,7 +14,8 @@
     "name": "Jesus Seijas",
     "url": "https://github.com/jseijas"
   },
-  "license": "MIT",  "bugs": {
+  "license": "MIT",
+  "bugs": {
     "url": "https://github.com/jseijas/flow-storage/issues"
   },
   "maintainers": [

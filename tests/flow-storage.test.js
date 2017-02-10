@@ -1,5 +1,7 @@
+/* global it, describe */
 import { expect } from 'chai';
 import FlowStorage from '../src/flow-storage';
+import MemoryCollection from '../src/memory-collection';
 
 describe('Flow Storage', () => {
 
@@ -9,6 +11,15 @@ describe('Flow Storage', () => {
       expect(instance).to.exist;
       expect(instance.getCollection('user')).to.exist;
       expect(instance.getCollection('channel')).to.exist;
+    });
+  });
+
+  describe('Add collection', () => {
+    it('Should be able to add a new collection', () => {
+      let collection = new MemoryCollection({ name: 'test'});
+      let instance = new FlowStorage();
+      instance.addCollection(collection);
+      expect(instance.getCollection('test')).to.equal(collection);
     });
   });
 

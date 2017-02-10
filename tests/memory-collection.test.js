@@ -1,3 +1,4 @@
+/* global it, describe */
 import { expect } from 'chai';
 import MemoryCollection from '../src/memory-collection';
 
@@ -43,7 +44,7 @@ describe('Memory collection', ()  => {
     it('Should be able to get an object', (done) => {
       let obj = { id: 1, firstname: 'Jesus', lastname: 'Seijas'};
       let instance = new MemoryCollection({ name: 'test' });
-      instance.setAll(obj.id, obj, (err, result) => {
+      instance.setAll(obj.id, obj, (err) => {
         expect(err).to.not.exsits;
         instance.getAll(obj.id, (err, result) => {
           expect(err).to.not.exists;
@@ -60,9 +61,9 @@ describe('Memory collection', ()  => {
       let obj1 = { id: 1, firstname: 'Jesus', lastname: 'Seijas'};
       let obj2 = { id: 2, firstname: 'Manolo', lastname: 'Povedilla'};
       let instance = new MemoryCollection({ name: 'test' });
-      instance.setAll(obj1.id, obj1, (err, result) => {
+      instance.setAll(obj1.id, obj1, (err) => {
         expect(err).to.not.exists;
-        instance.setAll(obj2.id, obj2, (err, result) => {
+        instance.setAll(obj2.id, obj2, (err) => {
           expect(err).to.not.exists;
           instance.getAll(obj1.id, (err, result) => {
             expect(err).to.not.exists;
@@ -97,12 +98,12 @@ describe('Memory collection', ()  => {
     it('Should be able to delete an object', (done) => {
       let obj = { id: 1, firstname: 'Jesus', lastname: 'Seijas'};
       let instance = new MemoryCollection({ name: 'test' });
-      instance.setAll(obj.id, obj, (err, result) => {
+      instance.setAll(obj.id, obj, (err) => {
         expect(err).to.not.exsits;
         instance.getAll(obj.id, (err, result) => {
           expect(err).to.not.exists;
           expect(result).to.exists;
-          instance.deleteAll(obj.id, (err, result) => {
+          instance.deleteAll(obj.id, (err) => {
             expect(err).to.not.exists;
             instance.getAll(obj.id, (err, result) => {
               expect(err).to.not.exists;
@@ -120,7 +121,7 @@ describe('Memory collection', ()  => {
     it('Should be able to get a property', (done) => {
       let obj = { id: 1, firstname: 'Jesus', lastname: 'Seijas'};
       let instance = new MemoryCollection({ name: 'test' });
-      instance.setAll(obj.id, obj, (err, result) => {
+      instance.setAll(obj.id, obj, (err) => {
         expect(err).to.not.exsits;
         instance.get(obj.id, 'firstname', (err, result) => {
           expect(err).to.not.exists;
@@ -136,9 +137,9 @@ describe('Memory collection', ()  => {
     it('Should be able to set a property', (done) => {
       let obj = { id: 1, firstname: 'Jesus', lastname: 'Seijas'};
       let instance = new MemoryCollection({ name: 'test' });
-      instance.setAll(obj.id, obj, (err, result) => {
+      instance.setAll(obj.id, obj, (err) => {
         expect(err).to.not.exsits;
-        instance.set(obj.id, 'firstname', 'Manolo', (err, result) => {
+        instance.set(obj.id, 'firstname', 'Manolo', (err) => {
           expect(err).to.not.exsits;
           instance.getAll(obj.id, (err, result) => {
             expect(err).to.not.exsits;
@@ -157,9 +158,9 @@ describe('Memory collection', ()  => {
     it('Should be able to delete a property', (done) => {
       let obj = { id: 1, firstname: 'Jesus', lastname: 'Seijas'};
       let instance = new MemoryCollection({ name: 'test' });
-      instance.setAll(obj.id, obj, (err, result) => {
+      instance.setAll(obj.id, obj, (err) => {
         expect(err).to.not.exsits;
-        instance.delete(obj.id, 'firstname', (err, result) => {
+        instance.delete(obj.id, 'firstname', (err) => {
           expect(err).to.not.exsits;
           instance.getAll(obj.id, (err, result) => {
             expect(err).to.not.exsits;

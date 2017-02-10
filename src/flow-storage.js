@@ -57,6 +57,101 @@ class FlowStorage {
       this.addCollection(collection);
     });
   }
+
+  /**
+   * Get the variables instance given the collection name and the key.
+   * 
+   * @param { String } collectionName Name of the collection.
+   * @param { String } key Identifier of the object.
+   * @param { Function } cb Callback function. 
+   */
+  getAllFromCollection(collectionName, key, cb) {
+    let collection = this.getCollection(collectionName);
+    if (!collection) {
+      return cb('The collection does not exists');
+    }
+    return collection.getAll(key, cb);
+  }
+
+  /**
+   * Set the variables instance given the collection name and the key.
+   * 
+   * @param { String } collectionName Name of the collection
+   * @param { String } key Identifier of the object.
+   * @param { Object } data Data to save.
+   * @param { Function } cb Callback function.
+   */
+  setAllToCollection(collectionName,key, data, cb) {
+    let collection = this.getCollection(collectionName);
+    if (!collection) {
+      return cb('The collection does not exists');
+    }
+    return collection.setAll(key, data, cb);
+  }
+
+  /**
+   * Delete the variables instance given the key.
+   * 
+   * @param { String } collectionName Name of the collection.
+   * @param { String } key Identifier of the object.
+   * @param { Function } cb Callback function.
+   */
+  deleteAllFromCollection(collectionName, key, cb) {
+    let collection = this.getCollection(collectionName);
+    if (!collection) {
+      return cb('The collection does not exists');
+    }
+    return collection.deleteAll(key, cb);
+  }
+
+  /**
+   * Gets the value of one variable, given the key and the variable name.
+   * 
+   * @param { String } collectionName Name of the collection.
+   * @param { String } key Identifier of the object.
+   * @param { String } name Variable name.
+   * @param { Function } cb Callback function.
+   */
+  getFromCollection(collectionName, key, name, cb) {
+    let collection = this.getCollection(collectionName);
+    if (!collection) {
+      return cb('The collection does not exists');
+    }
+    return collection.get(key, name, cb);
+  }
+
+  /**
+   * Sets the value of one variable, given the key and the variable name.
+   * 
+   * @param { String } collectionName Name of the collection.
+   * @param { String } key Identifier of the object.
+   * @param { String } name Variable name.
+   * @param { String } data Value of the variable to be setted.
+   * @param { Function } cb Callback function. 
+   */
+  setToCollection(collectionName, key, name, data, cb) {
+    let collection = this.getCollection(collectionName);
+    if (!collection) {
+      return cb('The collection does not exists');
+    }
+    return collection.set(key, name, data, cb);
+  }
+
+  /**
+   * Delete the value of one variable, given the key and the variable name.
+   * 
+   * @param { String } collectionName Name of the collection.
+   * @param { String } key Identifier of the object.
+   * @param { String } name Variable name.
+   * @param { Function } cb Callback function.
+   */
+  deleteFromCollection(collectionName, key, name, cb) {
+    let collection = this.getCollection(collectionName);
+    if (!collection) {
+      return cb('The collection does not exists');
+    }
+    return collection.delete(key, name, cb);
+  }
 }
 
 export default FlowStorage;
