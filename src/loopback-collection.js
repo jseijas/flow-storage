@@ -1,4 +1,4 @@
-import { BaseCollection } from 'flow-storage';
+import BaseCollection from './base-collection';
 import _ from 'lodash';
 
 /**
