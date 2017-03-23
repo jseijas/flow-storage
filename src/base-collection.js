@@ -82,9 +82,9 @@ class BaseCollection {
    */
   set(key, name, data, cb) {
     this.getAll(key, (err, obj) => {
-      if (err) {
+      /*if (err) {
         return cb(err);
-      }
+      }*/
       if (!obj) {
         obj = {};
       }
